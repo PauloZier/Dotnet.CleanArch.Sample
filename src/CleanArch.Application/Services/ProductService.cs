@@ -43,9 +43,14 @@ namespace CleanArch.Application.Services
 
         public async Task<ProductViewModel> SaveAsync(ProductViewModel product)
         {
+            #nullable disable
+
             var mapProduct = _mapper.Map<Product>(product);
+            await _validator.ValidateAndThrowAsync(mapProduct);
             await _repository.SaveAsync(mapProduct);
             return _mapper.Map<ProductViewModel>(mapProduct);
+
+            #nullable enable
         }
     }
 }

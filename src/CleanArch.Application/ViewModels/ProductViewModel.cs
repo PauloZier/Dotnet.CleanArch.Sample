@@ -19,6 +19,7 @@ namespace CleanArch.Application.ViewModels
 
         [Required]
         [Range(1, 99999.99)]
+        [DisplayFormat(DataFormatString = "{0:C2}")]
         public decimal? Price { get; set; }
     }
 }

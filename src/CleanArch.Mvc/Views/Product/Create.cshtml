@@ -1,0 +1,36 @@
+@model CleanArch.Application.ViewModels.ProductViewModel
+@{
+    ViewData["Title"] = "Register new Product";
+}
+
+@using (Html.BeginForm("Create", "Product", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    @Html.AntiForgeryToken()
+
+    <vc:summary />
+
+    @Html.HiddenFor(x => x.Id)
+
+    <div class="py-2">
+        @Html.LabelFor(x => x.Name, "Name", new { @class="form-label" })
+        @Html.TextBoxFor(x => x.Name, null, new { @class="form-control" })
+        @Html.ValidationMessageFor(x => x.Name, "", new { @class="text-danger" })
+    </div>
+
+    <div class="py-2">
+        @Html.LabelFor(x => x.Description, "Description", new { @class="form-label" })
+        @Html.TextBoxFor(x => x.Description, null, new { @class="form-control" })
+        @Html.ValidationMessageFor(x => x.Description, "", new { @class="text-danger" })
+    </div>
+
+    <div class="py-2">
+        @Html.LabelFor(x => x.Price, "Price", new { @class="form-label" })
+        @Html.TextBoxFor(x => x.Price, null, new { @class="form-control" })
+        @Html.ValidationMessageFor(x => x.Price, "", new { @class="text-danger" })
+    </div>
+
+    <div class="py-2">
+        <input type="submit" value="Create" class="btn btn-success" />
+        <a href='@Url.Action("Index", "Product")' class="btn btn-info text-white">Back to List</a>
+    </div>
+}

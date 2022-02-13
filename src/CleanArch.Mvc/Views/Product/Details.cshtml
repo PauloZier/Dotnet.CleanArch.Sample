@@ -1,0 +1,21 @@
+@model CleanArch.Application.ViewModels.ProductViewModel
+@{
+    ViewData["Title"] = "Product Details";
+}
+
+<div>
+    <h2>@ViewData["Title"]</h2>
+</div>
+
+<hr />
+
+<ul class="list-group">
+  <li class="list-group-item"><strong>Id:          </strong>@Model.Id</li>
+  <li class="list-group-item"><strong>Name:        </strong>@Model.Name</li>
+  <li class="list-group-item"><strong>Description: </strong>@Model.Description</li>
+  <li class="list-group-item"><strong>Price:       </strong>@Model.Price</li>
+</ul>
+
+<div class="py-2">
+    <a href='@Url.Action("Index", "Product")' class="btn btn-info text-white">Back to List</a>
+</div>

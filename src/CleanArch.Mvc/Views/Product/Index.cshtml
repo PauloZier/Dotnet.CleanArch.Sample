@@ -1,0 +1,62 @@
+@model IEnumerable<CleanArch.Application.ViewModels.ProductViewModel>
+@{
+    ViewData["Title"] = "Product Management";
+}
+
+<div>
+    <h2>@ViewData["Title"]</h2>
+</div>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="pull-left">
+            <a href='@Url.Action("Create", "Product")' class="btn btn-primary">
+                Register new
+            </a>
+        </div>
+    </div>
+</div>
+
+<br />
+
+<div class="panel panel-default">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Description
+                </th>
+                <th>
+                    Price
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr class="align-middle">
+                    <td>
+                        @item.Name
+                    </td>
+                    <td>
+                        @item.Description
+                    </td>
+                    <td>
+                        @item.Price
+                    </td>
+                    <td>
+                        <a href='@Url.Action("Edit", "Product", new { id = @item.Id })' class="btn btn-warning">Edit</a>
+                        <a href='@Url.Action("Details", "Product", new { id = @item.Id })' class="btn btn-primary">Details</a>
+                        <a href='@Url.Action("Delete", "Product", new { id = @item.Id })' class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

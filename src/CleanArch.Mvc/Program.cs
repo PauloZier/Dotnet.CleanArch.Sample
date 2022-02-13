@@ -1,12 +1,12 @@
-using CleanArch.Infra.Data;
-using CleanArch.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using CleanArch.Infra.IoC;
 using CleanArch.Infra.IoC.Extensions;
+using CleanArch.Mvc.MappingConfig;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.ConfigureContainer(builder.Configuration);
+builder.Services.AddAutoMapperConfiguration();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
